@@ -10,13 +10,16 @@ s.bind(('',port))
 g=56
 n=2371
 a=13
+print 'G ',g
+print 'n',n
+print 'Private Key: ',a
 
 
 s.sendto(str((g**a)%n),(sys.argv[1],8081))
 msg,addr=s.recvfrom(1024)
 c = int(msg)
-print 'A ',(g**a)%n
-print('c ',c)
+print 'Public Key: ',(g**a)%n
+
 ac = (c**a)%n
 print 'AC ',ac
 
@@ -27,5 +30,5 @@ print 'BC',msg
 bc = int(msg)
 
 abc = (bc**a)%n
-print 'ABC ',abc
+print 'Key: ',abc
 s.close()

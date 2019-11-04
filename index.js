@@ -99,7 +99,7 @@ var updateCount =function(){
         .then(function(docRef) {
             console.log("Document written with ID: ",docRef);
             if(count%3==0)
-                document.getElementById("id").innerHTML="A";
+                    document.getElementById("id").innerHTML="A";
             if(count%3==1)
                 document.getElementById("id").innerHTML="B";
             if(count%3==2)
