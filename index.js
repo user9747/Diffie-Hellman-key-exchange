@@ -90,26 +90,26 @@ var updateCount =function(){
         querySnapshot.forEach((doc) => {
             count = doc.data().count;
             count = count + 1;
-            db.collection("count").doc("count").set({
-                count:count
-            }, { merge: true })
-            .then(function(docRef) {
-                console.log("Document written with ID: ",docRef);
-                if(count%3==0)
-                    document.getElementById("id").innerHTML="A";
-                if(count%3==1)
-                    document.getElementById("id").innerHTML="B";
-                if(count%3==2)
-                    document.getElementById("id").innerHTML="C";
-                
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
-
-
         });
-    });
+    })
+    .then(function(){
+        db.collection("count").doc("count").set({
+            count:count
+        }, { merge: true })
+        .then(function(docRef) {
+            console.log("Document written with ID: ",docRef);
+            if(count%3==0)
+                document.getElementById("id").innerHTML="A";
+            if(count%3==1)
+                document.getElementById("id").innerHTML="B";
+            if(count%3==2)
+                document.getElementById("id").innerHTML="C";
+            
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+    })
 }
 
 var reset = function(){
